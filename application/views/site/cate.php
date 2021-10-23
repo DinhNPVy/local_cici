@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="heading-v3">
-                <img src="img/smicon.png" alt="images" class="img-responsive">
+                <img src="<?php echo public_url() ?>site/image/smicon.png" alt="images" class="img-responsive">
                 <span>Smartphone</span>
             </div>
             <div class="product-item ver3">
                 <div class="photo">
-                    <a href="#"><img src="img/iphone6.png" alt="images" class="img-responsive"></a>
+                    <a href="#"><img src="<?php echo public_url() ?>site/image/iphone6.png" alt="images" class="img-responsive"></a>
                 </div>
                 <ul>
                     <li><a href="#">phones</a></li>
@@ -21,12 +21,12 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="heading-v3">
-                <img src="img/laptopicon.png" alt="images" class="img-responsive">
+                <img src="<?php echo public_url() ?>site/image/laptopicon.png" alt="images" class="img-responsive">
                 <span>LAPTOP</span>
             </div>
             <div class="product-item ver3">
                 <div class="photo">
-                    <a href="#"><img src="img/laptop.png" alt="images" class="img-responsive"></a>
+                    <a href="#"><img src="<?php echo public_url() ?>site/image/laptop.png" alt="images" class="img-responsive"></a>
                 </div>
                 <ul>
                     <li><a href="#">phones</a></li>
@@ -40,12 +40,12 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="heading-v3">
-                <img src="img/camicon.png" alt="images" class="img-responsive">
+                <img src="<?php echo public_url() ?>site/image/camicon.png" alt="images" class="img-responsive">
                 <span>CAMERA</span>
             </div>
             <div class="product-item ver3">
                 <div class="photo">
-                    <a href="#"><img src="img/cam.png" alt="images" class="img-responsive"></a>
+                    <a href="#"><img src="<?php echo public_url() ?>site/image/cam.png" alt="images" class="img-responsive"></a>
                 </div>
                 <ul>
                     <li><a href="#">phones</a></li>
