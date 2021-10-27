@@ -15,7 +15,7 @@
         <?php $this->load->view('site/slide'); ?>
     </div>
     <section class="best-seller top-sales">
-        <?php $this->load->view('site/bestseller') ?>
+        <?php $this->load->view($temp) ?>
     </section>
     <section class="subbanner">
         <?php $this->load->view('site/subbanner') ?>
