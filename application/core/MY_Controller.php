@@ -1,6 +1,8 @@
 <?php
 class MY_Controller extends CI_Controller
 {
+    #biến gửi dữ liệu sang view
+    public $data = array();
     function __construct()
     {
         // ke thua tu CI_Controller
