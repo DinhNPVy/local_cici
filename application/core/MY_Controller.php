@@ -13,7 +13,8 @@ class MY_Controller extends CI_Controller
         switch ($controller) {
             case 'admin': {
                     // xu ly du lieu khi truy cap vao admin
-
+                    $this->load->helper('admin');
+                    // $this->_check_login();
 
                     break;
                 }
