@@ -189,4 +189,13 @@ class Admin extends MY_Controller
         $this->session->set_flashdata('message', 'Delete success');
         redirect(admin_url('admin'));
     }
+
+    // thuc hien dang xuat
+    function logout()
+    {
+        if ($this->session->userdata('login')) {
+            $this->session->unset_userdata('login');
+        }
+        redirect(admin_url('login'));
+    }
 }
