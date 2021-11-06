@@ -100,8 +100,9 @@
                         </g>
                     </svg>
                 </div>
-                <span class="nav-link-text ms-1">Sản phẩm</span>
+                <span class="nav-link-text ms-1">Catalog</span>
             </a>
+
         </li>
 
         <li class="nav-item">
@@ -123,6 +124,7 @@
                 </div>
                 <span class="nav-link-text ms-1">Sign In</span>
             </a>
+
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo admin_url('admin/add') ?>">
