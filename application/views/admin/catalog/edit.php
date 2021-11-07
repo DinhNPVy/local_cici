@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <form role="form text-left" method="post" action="">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="CatalogName" name="name">
+                                <input type="text" class="form-control" placeholder="CatalogName" name="name" value="<?php echo $info->name ?>">
                                 <div>
                                     <?php echo form_error('name') ?>
                                 </div>
@@ -41,7 +41,7 @@
                                 <select type="text" class="form-control" name="parent_id">
                                     <option value="0">Click Parent directory</option>
                                     <?php foreach ($list as $row) : ?>
-                                        <option value=<?php echo $row->id ?>>
+                                        <option value=<?php echo $row->id ?> <?php echo ($row->id == $info->parent_id) ? 'selected' : ''; ?>>
                                             <?php echo $row->name ?>
                                         </option>
                                     <?php endforeach ?>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="DisplayOrther" name="sort_order">
+                                <input type="text" class="form-control" placeholder="DisplayOrther" name="sort_order" value="<?php echo $info->sort_order ?>">
                                 <div>
                                     <?php echo form_error('sort_order') ?>
                                 </div>
