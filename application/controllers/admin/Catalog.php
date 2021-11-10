@@ -134,7 +134,7 @@ class Catalog extends MY_Controller
         $info = $this->catalog_model->get_info($id);
 
         if (!$info) {
-            $this->session->set_flashdata('message', 'Admin does not exist');
+            $this->session->set_flashdata('message', 'Catalog does not exist');
             redirect(admin_url('catalog'));
         }
         // thuc hien xoa 
