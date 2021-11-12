@@ -95,12 +95,14 @@ class Admin extends MY_Controller
                 $email = $this->input->post('email');
                 $phone = $this->input->post('phone');
 
+
                 $data = array(
                     'username' => $username,
                     'password' => md5($password),
                     'name' => $name,
                     'email' => $email,
                     'phone' => $phone,
+
 
                 );
                 if ($this->admin_model->create($data)) {
@@ -150,6 +152,8 @@ class Admin extends MY_Controller
                 $email = $this->input->post('email');
                 $phone = $this->input->post('phone');
 
+
+
                 $data = array(
                     'username' => $username,
                     'password' => md5($password),
@@ -158,6 +162,8 @@ class Admin extends MY_Controller
                     'phone' => $phone,
 
                 );
+
+
                 if ($this->admin_model->update($id, $data)) {
                     $this->session->set_flashdata('message', 'Update success');
                 } else {

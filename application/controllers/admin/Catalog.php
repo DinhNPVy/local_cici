@@ -137,6 +137,15 @@ class Catalog extends MY_Controller
             $this->session->set_flashdata('message', 'Catalog does not exist');
             redirect(admin_url('catalog'));
         }
+
+        // kiem tra xem danh muc nay co san pham khong
+        $this->load->model('product_model');
+        $product = $this->product_model->get_info_rule(array('catalog_id' => $id), 'id');
+        if ($product) {
+            $this->session->set_flashdata('message', 'This category contains products, please remove the product before deleting the category');
+            redirect(admin_url('catalog'));
+        }
+
         // thuc hien xoa 
 
         $this->catalog_model->delete($id);

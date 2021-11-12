@@ -1,5 +1,5 @@
 <head>
-    <?php $this->load->view('admin/product/head', $this->data); ?>
+    <?php $this->load->view('admin/slide/head', $this->data); ?>
 </head>
 
 <style>
@@ -294,11 +294,11 @@
 <div class="wrapper">
 
     <!-- Form -->
-    <form enctype="multipart/form-data" method="post" action="<?php echo admin_url('product/add') ?>" id="form" class="form">
+    <form enctype="multipart/form-data" method="post" action="<?php echo admin_url('slide/edit') ?>" id="form" class="form">
         <fieldset>
             <div class="widget">
                 <div class=" title card-header text-center pt-1">
-                    <h5>Add Product</h5>
+                    <h5>Edit Slide</h5>
                 </div>
 
 
@@ -310,8 +310,7 @@
 
                 <ul class="tabs">
                     <li class="activeTab"><a href="#tab1">Information</a></li>
-                    <li class=""><a href="#tab2">SEO Onpage</a></li>
-                    <li class=""><a href="#tab3">Posts</a></li>
+
 
                 </ul>
 
@@ -320,7 +319,7 @@
                         <div class="formRow">
                             <label for="param_name" class="formLeft">Name:<span class="req">*</span></label>
                             <div class="formRight">
-                                <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_name" name="name"></span>
+                                <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_name" name="name" value="<?php echo $slide->name ?>"></span>
                                 <span class="autocheck" name="name_autocheck"></span>
                                 <div class="clear error" name="name_error"></div>
                             </div>
@@ -332,159 +331,51 @@
                             <div class="formRight">
                                 <div class="left">
                                     <input class="form-control" type="file" name="image" id="image" size="25">
+                                    <img src="<?php echo base_url('upload/slide/' . $slide->image_link) ?>" style="width: 185px; margin: 5px" alt="">
                                 </div>
                                 <div class="clear error" name="image_error"></div>
                             </div>
                             <div class="clear"></div>
                         </div>
 
-                        <div class="formRow">
-                            <label class="formLeft">Attached photo:</label>
-                            <div class="formRight">
-                                <div class="left">
-                                    <input class="form-control" type="file" multiple="" name="image_list[]" id="image_list" size="25">
-                                </div>
-                                <div class="clear error" name="image_list_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
 
-                        <!-- Price -->
-                        <div class="formRow">
-                            <label for="param_price" class="formLeft">
-                                Price :
-                                <span class="req">*</span>
-                            </label>
-                            <div class="formRight">
-                                <span class="oneTwo">
-                                    <input type="text" _autocheck="true" class="form-control format_number" id="price" style="width:90%" name="price">
-                                    <img src="<?php echo public_url('admin/assets') ?>/img/information.png" style="float: right; margin-top: -33px;" class="tipS" original-title="Giá bán sử dụng để giao dịch">
-                                </span>
-                                <span class="autocheck" name="price_autocheck"></span>
-                                <div class="clear error" name="price_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-                        <!-- Price -->
-                        <div class="formRow">
-                            <label for="param_discount" class="formLeft">
-                                Discount (VNĐ)
-                                <span></span>:
-                            </label>
-                            <div class="formRight">
-                                <span>
-                                    <input type="text" class="form-control format_number" id="param_discount" style="width:90%" name="discount">
-                                    <img src="<?php echo public_url('admin/assets') ?>/img/information.png" style=" float: right; margin-top: -33px;" class="tipS" original-title="Số tiền giảm giảm giá">
-                                </span>
-                                <span class="autocheck" name="discount_autocheck"></span>
-                                <div class="clear error" name="discount_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-
-                        <div class="formRow">
-                            <label for="param_cat" class="formLeft">Types:<span class="req">*</span></label>
-                            <div class="formRight">
-                                <select class="form-control" name="catalog" class="left">
-                                    <option value="">Choose Type</option>
-                                    <!-- kiem tra danh muc co danh muc con hay khong -->
-                                    <?php foreach ($catalogs as $row) : ?>
-                                        <?php if (count($row->subs) > 1) : ?>
-                                            <optgroup label="<?php echo $row->name ?>">
-                                                <?php foreach ($row->subs as $sub) : ?>
-                                                    <option value="<?php echo $sub->id ?>"> <?php echo $sub->name ?> </option>
-                                                <?php endforeach; ?>
-                                            </optgroup>
-                                        <?php else : ?>
-                                            <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-                                </select>
-                                <span class="autocheck" name="cat_autocheck"></span>
-                                <div class="clear error" name="cat_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-
-                        <!-- warranty -->
-                        <div class="formRow">
-                            <label for="param_warranty" class="formLeft">
-                                Warranty :
-                            </label>
-                            <div class="formRight">
-                                <span class="oneFour"><input class="form-control" type="text" id="param_warranty" name="warranty"></span>
-                                <span class="autocheck" name="warranty_autocheck"></span>
-                                <div class="clear error" name="warranty_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-                        <div class="formRow">
-                            <label for="param_sale" class="formLeft">Gift:</label>
-                            <div class="formRight">
-                                <span class="oneTwo"><textarea class="form-control" cols="" rows="4" id="param_gifts" name="gifts"></textarea></span>
-                                <span class="autocheck" name="sale_autocheck"></span>
-                                <div class="clear error" name="sale_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
                         <div class="formRow hide"></div>
                     </div>
-
-                    <div class="tab_content pd0" id="tab2" style="display: none;">
-
-                        <div class="formRow">
-                            <label for="param_site_title" class="formLeft">Title:</label>
-                            <div class="formRight">
-                                <span class="oneTwo"><textarea class="form-control" cols="" rows="4" _autocheck="true" id="param_site_title" name="site_title"></textarea></span>
-                                <span class="autocheck" name="site_title_autocheck"></span>
-                                <div class="clear error" name="site_title_error"></div>
-                            </div>
-                            <div class="clear"></div>
+                    <div class="formRow">
+                        <label for="param_name" class="formLeft">Link:</label>
+                        <div class="formRight">
+                            <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_link" name="link" value="<?php echo $slide->link ?>"></span>
+                            <span class="autocheck" name="name_autocheck"></span>
+                            <div class="clear error" name="name_error"></div>
                         </div>
-
-                        <div class="formRow">
-                            <label for="param_meta_desc" class="formLeft">Meta description:</label>
-                            <div class="formRight">
-                                <span class="oneTwo"><textarea cols="" rows="4" _autocheck="true" id="param_meta_desc" name="meta_desc" class="form-control"></textarea></span>
-                                <span class="autocheck" name="meta_desc_autocheck"></span>
-                                <div class="clear error" name="meta_desc_error"></div>
-                            </div>
-                            <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label for="param_name" class="formLeft">Content:</label>
+                        <div class="formRight">
+                            <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_info" name="info" value="<?php echo $slide->info ?>"></span>
+                            <span class="autocheck" name="name_autocheck"></span>
+                            <div class="clear error" name="name_error"></div>
                         </div>
-
-                        <div class="formRow">
-                            <label for="param_meta_key" class="formLeft">Meta keywords:</label>
-                            <div class="formRight">
-                                <span class="oneTwo"><textarea cols="" rows="4" _autocheck="true" id="param_meta_key" name="meta_key" class="form-control"></textarea></span>
-                                <span class="autocheck" name="meta_key_autocheck"></span>
-                                <div class="clear error" name="meta_key_error"></div>
-                            </div>
-                            <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label for="param_name" class="formLeft">Sort_order:</label>
+                        <div class="formRight">
+                            <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_sort_order" name="sort_order" value="<?php echo $slide->sort_order ?>"></span>
+                            <span class="autocheck" name="name_autocheck"></span>
+                            <div class="clear error" name="name_error"></div>
                         </div>
-                        <div class="formRow hide"></div>
+                        <div class="clear"></div>
                     </div>
 
-                    <div class="tab_content pd0" id="tab3" style="display: none;">
-                        <div class="formRow">
-                            <label class="formLeft">Content:</label>
-                            <div class="formRight">
-                                <textarea class="form-control" class="editor" id="param_content" name="content"></textarea>
-                                <div class="clear error" name="content_error"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="formRow hide"></div>
-                    </div>
-                    <div class="formSubmit">
-                        <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2" value="Save" />
 
-                    </div>
 
                 </div><!-- End tab_container-->
+                <div class="formSubmit">
+                    <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2" value="Save" />
+
+                </div>
 
 
                 <div class="clear"></div>
