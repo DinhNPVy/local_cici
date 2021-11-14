@@ -9,11 +9,11 @@
         <?php $this->load->view('site/modal'); ?>
     </div>
     <header>
-        <?php $this->load->view('site/header'); ?>
+        <?php $this->load->view('site/header', $this->data); ?>
     </header>
-    <div class="slide v3">
+    <section class="slide">
         <?php $this->load->view('site/slide'); ?>
-    </div>
+    </section>
     <section class="best-seller top-sales">
         <?php $this->load->view($temp) ?>
     </section>

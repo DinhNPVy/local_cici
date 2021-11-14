@@ -103,7 +103,7 @@
                                         <a href="<?php echo admin_url('news/delete/' . $row->id) ?>" onclick="return confirm('Are you want to delete?')" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete">
                                             <img alt="Image placeholder" src="<?php echo public_url('admin/assets') ?>/img/trash-outline.svg" style="height: 18px;">
                                         </a>
-                                        <a href="" title="View Article Details">
+                                        <a href="<?php echo $row->link ?>" title="View Article Details">
                                             <span class="btn btn-outline-primary btn-sm mb-0">View Article Details</span>
                                         </a>
 

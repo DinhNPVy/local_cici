@@ -214,73 +214,31 @@
                 <aside id="column-left">
                     <nav class="navbar-default">
                         <div class="menu-heading v3 js-nav-menu ">ALL CATEGORIES</div>
-                        <div class="vertical-wrapper v3 js-dropdown-menu">
+                        <div class="vertical-wrapper v3 js-dropdown-menu js-dropdown-open active">
                             <ul class="level0">
-                                <li><a href="#">camera</a><span class="icon icon-cameraver1"></span></li>
-                                <li><a href="#">laptop</a><span class="icon"></span></li>
-                                <li><a href="#">mobile phone</a><span class="icon"></span></li>
-                                <li class="game">
-                                    <a href="#">game control</a>
-                                    <div class="dropdown-content">
-                                        <ul class="level1">
-                                            <li class="sub-menu col-3">
-                                                <a href="#">ACCESSORIES</a>
-                                                <ul class="level2">
-                                                    <li class="col-inner"><a href="#">Maybellin Face Power</a></li>
-                                                    <li class="col-inner"><a href="#">Chanel Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Mascara For Full Lashes Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom Maybellin Face</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom</a></li>
-                                                    <li class="col-inner"><a href="#">Lady Dior Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Mirinda</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-menu col-3">
-                                                <a href="#">Electronic</a>
-                                                <ul class="level2">
-                                                    <li class="col-inner"><a href="#">Maybellin Face Power</a></li>
-                                                    <li class="col-inner"><a href="#">Chanel Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Mascara For Full Lashes Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom Maybellin Face</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom</a></li>
-                                                    <li class="col-inner"><a href="#">Lady Dior Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Casopia</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-menu col-3">
-                                                <a href="#">COMPUTER & OTHERS</a>
-                                                <ul class="level2">
-                                                    <li class="col-inner"><a href="#">Maybellin Face Power</a></li>
-                                                    <li class="col-inner"><a href="#">Chanel Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Mascara For Full Lashes Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom Maybellin Face</a></li>
-                                                    <li class="col-inner"><a href="#">Offical Cosme-Decom</a></li>
-                                                    <li class="col-inner"><a href="#">Lady Dior Mascara</a></li>
-                                                    <li class="col-inner"><a href="#">Draven</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <div class="banner">
-                                            <a href="#"><img src="img/megamenubanner.png" alt="images" class="img-responsive"></a>
+                                <?php foreach ($catalog_list as $row) : ?>
+
+                                    <li class="game">
+                                        <a href="#"><?php echo $row->name ?></a>
+                                        <div class="dropdown-content">
+
+                                            <ul class="level1">
+
+                                                <li class="sub-menu col-3">
+                                                    <a href="#"><?php echo $row->name ?></a>
+                                                    <?php if (!empty($row->subs)) : ?>
+                                                        <ul class="level2">
+                                                            <?php foreach ($row->subs as $sub) : ?>
+                                                                <li class="col-inner"><a href="#" title="<?php echo $sub->name ?>"><?php echo $sub->name ?></a></li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </li>
+
+                                            </ul>
                                         </div>
-                                    </div>
-                                </li>
-                                <li><a href="#">headphone</a></li>
-                                <li><a href="#">mouse</a></li>
-                                <li><a href="#">washing machine</a></li>
-                                <li><a href="#">air conditional</a></li>
-                                <li><a href="#">accessories</a></li>
-                                <li><a href="#">others</a></li>
-                                <li class="sub-form-li">
-                                    <div>
-                                        Subscribe
-                                    </div>
-                                    <form action="#" class="sub-form">
-                                        <input type="text" name="e" class="form-control" placeholder="Your email here...">
-                                        <button type="submit" class="btn btn-sub">Send Now</button>
-                                    </form>
-                                </li>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </nav>

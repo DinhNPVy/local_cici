@@ -326,6 +326,15 @@
                             </div>
                             <div class="clear"></div>
                         </div>
+                        <div class="formRow">
+                            <label for="param_name" class="formLeft">Link:<span class="req">*</span></label>
+                            <div class="formRight">
+                                <span class="oneTwo"><input class="form-control" type="text" _autocheck="true" id="param_link" name="link" value="<?php echo $news->link ?>"></span>
+                                <span class="autocheck" name="name_autocheck"></span>
+                                <div class="clear error" name="name_error"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
 
                         <div class="formRow">
                             <label class="formLeft">Photo:<span class="req">*</span></label>

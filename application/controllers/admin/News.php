@@ -72,6 +72,7 @@ class News extends MY_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('title', 'Title', 'required');
             $this->form_validation->set_rules('content', 'Content', 'required');
+            $this->form_validation->set_rules('link', 'Link', 'required');
 
 
 
@@ -98,6 +99,7 @@ class News extends MY_Controller
                     'meta_desc' => $this->input->post('meta_desc'),
                     'meta_key' => $this->input->post('meta_key'),
                     'content' => $this->input->post('content'),
+                    'link'   => $this->input->post('link'),
                     'created' => now(),
 
                 );
@@ -166,7 +168,8 @@ class News extends MY_Controller
                     'title' => $this->input->post('title'),
                     'meta_desc' => $this->input->post('meta_desc'),
                     'meta_key' => $this->input->post('meta_key'),
-                    'content' => $this->input->post('content')
+                    'content' => $this->input->post('content'),
+                    'link'   => $this->input->post('link'),
 
                 );
                 if ($image_link != '') {
