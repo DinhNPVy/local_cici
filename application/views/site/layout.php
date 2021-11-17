@@ -11,12 +11,16 @@
     <header>
         <?php $this->load->view('site/header', $this->data); ?>
     </header>
-    <section class="slide">
-        <?php $this->load->view('site/slide'); ?>
+    <section class="">
+        <?php $this->load->view($temp, $this->data); ?>
     </section>
-    <section class="best-seller top-sales">
-        <?php $this->load->view($temp) ?>
+    <section class="popular-product">
+        <?php $this->load->view('site/popular-product', $this->data); ?>
     </section>
+    <section class="featured-product">
+        <?php $this->load->view('site/toprates'); ?>
+    </section>
+
     <section class="subbanner">
         <?php $this->load->view('site/subbanner') ?>
     </section>

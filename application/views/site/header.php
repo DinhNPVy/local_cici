@@ -116,7 +116,7 @@
                                 <li>
                                     <div class="item-order">
                                         <div class="item-photo">
-                                            <a href="#"><img src="img/cart1.png" alt="images" class="img-responsive"></a>
+                                            <a href="#"><img src="<?php echo public_url() ?>/site/image/cart1.png" alt="images" class="img-responsive"></a>
                                         </div>
                                         <div class="item-content">
                                             <h3><a href="#" title="">iPad Pro MLMX2CL/A</a></h3>
@@ -129,7 +129,7 @@
                                 <li>
                                     <div class="item-order">
                                         <div class="item-photo">
-                                            <a href="#"><img src="img/cart1.png" alt="images" class="img-responsive"></a>
+                                            <a href="#"><img src="<?php echo public_url() ?>/site/image/cart1.png" alt="images" class="img-responsive"></a>
                                         </div>
                                         <div class="item-content">
                                             <h3><a href="#" title="">iPad Pro MLMX2CL/A</a></h3>
@@ -236,10 +236,26 @@
                                                 </li>
 
                                             </ul>
+                                            <div class="clearfix"></div>
+                                            <div class="banner">
+                                                <a href="#"><img src="<?php echo public_url() ?>/site/image/megamenubanner.png" alt="images" class="img-responsive"></a>
+                                            </div>
                                         </div>
                                     </li>
                                 <?php endforeach; ?>
+                                <li class="sub-form-li" style="background: url(<?php echo public_url() ?>/site/image/menubg.jpg)" style="center; no-repeat;">
+                                    <div>
+                                        Welcome
+                                    </div>
+                                    <form action="#" class="sub-form">
+                                        <input type="text" name="e" class="form-control" placeholder="Choose the category....">
+                                        <button type="submit" class="btn btn-sub">Thank you <span class="ion-chevron-right"></span></button>
+                                    </form>
+
+                                </li>
+
                             </ul>
+
                         </div>
                     </nav>
                 </aside>
@@ -296,7 +312,7 @@
                                     <li class="sub-menu col-3">
                                         <a href="#">NEW Arrival</a>
                                         <ul class="level2">
-                                            <li class="text-center"><a href="comming-soon.html"><img src="img/megaimg.png" alt="images" class="img-responsive"></a></li>
+                                            <li class="text-center"><a href="comming-soon.html"><img src="<?php echo public_url() ?>/site/image/megaimg.png" alt="images" class="img-responsive"></a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -315,8 +331,8 @@
                             <a href="#" title="Blog">blog</a>
                             <span class="plus js-plus-icon"></span>
                             <ul class="dropdown-menu menu-level menu-level-last">
-                                <li><a href="blog-v1.html" title="blog">Blog</a></li>
-                                <li><a href="blog-single-v1.html" title="blog-single">Blog Single</a></li>
+                                <li><a href="" title="blog">Blog</a></li>
+                                <!-- <li><a href="blog-single-v1.html" title="blog-single">Blog Single</a></li> -->
                             </ul>
                         </li>
                         <li class="dropdown menu-others-page menu-item-has-child"><a href="#" title="Others">others</a>

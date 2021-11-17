@@ -404,7 +404,6 @@ body {
   
    */
   .slide {
-    background: #f2f2f2;
     padding-top: 30px;
     padding-bottom: 65px; }
     @media (max-width: 767px) {
@@ -2034,7 +2033,7 @@ body {
   .sub-form-li {
     padding: 45px 30px 60px 30px;
     text-align: center;
-    background: url("../img/menubg.jpg") no-repeat center;
+    /* background: url("<?php echo public_url() ?>site/image/menubg.jpg") no-repeat center; */
     background-size: cover; }
     @media (max-width: 992px) {
       .sub-form-li {

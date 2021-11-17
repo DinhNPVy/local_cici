@@ -32,6 +32,24 @@ class MY_Controller extends CI_Controller
                     }
                     $this->data['catalog_list'] = $catalog_list;
                     // pre($catalog_list);
+
+                    // lay danh sach bai viet moi
+                    $this->load->model('news_model');
+                    $input = array();
+                    $input['limit'] = array(6, 0);
+                    $news_list = $this->news_model->get_list($input);
+                    $this->data['news_list'] = $news_list;
+
+                    // lay danh sach san pham mơi
+                    $this->load->model('product_model');
+                    $input = array();
+                    $input['limit'] = array(5, 0);
+                    $product_newsest = $this->product_model->get_list($input);
+                    $this->data['product_newsest'] = $product_newsest;
+
+                    $input['order'] = array('buyed', 'DESC');
+                    $product_buy = $this->product_model->get_list($input);
+                    $this->data['product_buy'] = $product_buy;
                 }
         }
     }
