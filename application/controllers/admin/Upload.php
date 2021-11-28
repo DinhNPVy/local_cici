@@ -13,6 +13,18 @@ class Upload extends MY_Controller
         $this->data['temp'] = 'admin/upload/index';
         $this->load->view('admin/main', $this->data);
     }
+    function upload_video()
+    {
+        if ($this->input->post('submit')) {
+
+            $this->load->library('upload_library');
+            $upload_path = "./upload/user";
+
+            $data = $this->upload_library->upload($upload_path, 'filevideo');
+        }
+        $this->data['temp'] = 'admin/upload/upload_video';
+        $this->load->view('admin/main', $this->data);
+    }
 
     // function upload file
     function upload_file()

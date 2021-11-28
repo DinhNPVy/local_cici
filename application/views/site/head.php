@@ -26,7 +26,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>ClickBuy</title>
+<title>LocalWare</title>
+<link rel="shortcut icon" href="<?php echo public_url() ?>site/image/logomini.png" type="image/x-icon">
 <link rel="stylesheet" href="<?php echo public_url() ?>site/css/bootstrap.css">
 <link rel="stylesheet" href="<?php echo public_url() ?>site/css/font-awesome.css">
 <link rel="stylesheet" href="<?php echo public_url() ?>site/css/ionicons.min.css">

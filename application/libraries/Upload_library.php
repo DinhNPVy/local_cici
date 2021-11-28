@@ -26,6 +26,7 @@ class Upload_library
         return $data;
     }
 
+
     /*
      * Upload nhieu file
      * @$upload_path : Duong dan luu file
@@ -61,9 +62,6 @@ class Upload_library
         return $image_list;
     }
 
-    /*
-     * Cau hinh upload file
-     */
     function config($upload_path = '')
     {
         //Khai bao bien cau hinh
@@ -71,13 +69,13 @@ class Upload_library
         //thuc mục chứa file
         $config['upload_path']   = $upload_path;
         //Định dạng file được phép tải
-        $config['allowed_types'] = 'jpg|png|gif';
+        $config['allowed_types'] = 'mp4|jpg|png|gif';
         //Dung lượng tối đa
-        $config['max_size']      = '3000';
+        $config['max_size']      = '';
         //Chiều rộng tối đa
-        $config['max_width']     = '1028';
+        $config['max_width']     = '200000000';
         //Chiều cao tối đa
-        $config['max_height']    = '1028';
+        $config['max_height']    = '1000000000000';
 
         return $config;
     }

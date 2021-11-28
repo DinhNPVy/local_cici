@@ -6,7 +6,7 @@ class Login extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         if ($this->input->post()) {
-            $this->form_validation->set_rules('login', 'login', 'callback_check_login');
+            $this->form_validation->set_rules('login', 'Sign in', 'callback_check_login');
             if ($this->form_validation->run()) {
                 $this->session->set_userdata('login', true);
 

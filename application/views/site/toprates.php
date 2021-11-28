@@ -18,10 +18,10 @@
                         <div class="col-md-15 col-sm-4 col-xs-6">
                             <div class="product-item ver2">
                                 <div class="prod-item-img bd-style-2">
-                                    <a href="#"><img src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name ?>" class="img-responsive"></a>
+                                    <a href="<?php echo base_url('product/view/' . $row->id) ?>"><img src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name ?>" class="img-responsive"></a>
                                     <div class="button">
-                                        <a href="#" class="addcart">ADD TO CART</a>
-                                        <a href="#" class="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="addcart">ADD TO CART</a>
+                                        <a href="<?php echo base_url('product/view/' . $row->id) ?>" class="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                                 <div class="prod-info">
@@ -33,6 +33,7 @@
                                         <a href="#"><i class="fa fa-star fa-1" aria-hidden="true" style="color: gold;"></i></a>
                                         <a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
                                         <span class="number">(12)</span>
+
                                     </div>
 
                                     <div class="p-price">
@@ -46,7 +47,10 @@
                                                 <?php echo number_format($row->price) ?> VNĐ
                                             </p>
                                         <?php endif; ?>
-                                        <p class="price black">Purchases: <?php echo $row->buyed ?></p>
+                                        <p class="price black">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="price black">
+                                                &ensp; <?php echo $row->buyed ?></span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

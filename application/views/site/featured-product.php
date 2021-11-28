@@ -297,10 +297,10 @@
                         <div class="col-md-15 col-sm-4 col-xs-6">
                             <div class="product-item ver2">
                                 <div class="prod-item-img bd-style-2">
-                                    <a href="#"><img src="img/products/sound3.jpg" alt="images" class="img-responsive"></a>
+                                    <a href="<?php echo base_url('product/view/' . $row->id) ?>"><img src="img/products/sound3.jpg" alt="images" class="img-responsive"></a>
                                     <div class="button">
                                         <a href="#" class="addcart">ADD TO CART</a>
-                                        <a href="#" class="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="<?php echo base_url('product/view/' . $row->id) ?>" class="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                                 <div class="prod-info">

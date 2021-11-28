@@ -33,23 +33,18 @@ class MY_Controller extends CI_Controller
                     $this->data['catalog_list'] = $catalog_list;
                     // pre($catalog_list);
 
-                    // lay danh sach bai viet moi
-                    $this->load->model('news_model');
-                    $input = array();
-                    $input['limit'] = array(6, 0);
-                    $news_list = $this->news_model->get_list($input);
-                    $this->data['news_list'] = $news_list;
-
-                    // lay danh sach san pham mơi
-                    $this->load->model('product_model');
-                    $input = array();
-                    $input['limit'] = array(5, 0);
-                    $product_newsest = $this->product_model->get_list($input);
-                    $this->data['product_newsest'] = $product_newsest;
-
-                    $input['order'] = array('buyed', 'DESC');
-                    $product_buy = $this->product_model->get_list($input);
-                    $this->data['product_buy'] = $product_buy;
+                    // kiem tra xem thanh vien da dang nhap hay chua
+                    $user_id_login = $this->session->userdata('user_id_login');
+                    $this->data['user_id_login'] = $user_id_login;
+                    // neu dang nhap thanh cong lay thong tin thanh vien
+                    if ($user_id_login) {
+                        $this->load->model('user_model');
+                        $user_info = $this->user_model->get_info($user_id_login);
+                        $this->data['user_info'] = $user_info;
+                    }
+                    // goi toi thu vien
+                    $this->load->library('cart');
+                    $this->data['total_items'] = $this->cart->total_items();
                 }
         }
     }
@@ -69,4 +64,5 @@ class MY_Controller extends CI_Controller
             redirect(admin_url('home'));
         }
     }
+
 }

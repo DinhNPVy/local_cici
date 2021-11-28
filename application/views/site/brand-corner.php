@@ -1,179 +1,48 @@
 <div class="container">
     <div class="heading-v1 v2 top30">
-        <h3 class="title v2 v3 pull-left">Best Sellers</h3>
+        <h3 class="title v2 v3 pull-left">All Product</h3>
         <div class="clearfix"></div>
     </div>
     <div class=" row brand-list-v1 top-row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/cycle.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony a7 Full-Frame Mirrorless Digital Camera...</a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
+        <?php foreach ($product_all as $row) : ?>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                <div class="product-item ver1 ">
+                    <div class="prod-item-img set--width50">
+                        <a href="<?php echo base_url('product/view/' . $row->id) ?>"><img src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name ?>" class="img-responsive"></a>
                     </div>
-                    <div class="p-price">
-                        <span class="price black">$199.69</span>
+                    <div class="button">
+                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="addcart addcart-v2">ADD TO CART</a>
+                        <a href="<?php echo base_url('product/view/' . $row->id) ?>" class="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/iwatch.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Apple iPad 4 16GB 9.7" Retina Display WiFi...</a></h3>
-                    <div class="prod-price">
-                        <span class="price old">$299.6</span>
-                        <span class="price">$210.25</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/smarphone.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Samsung UN65KS8000 65-Inch 4K Ultra HD</a></h3>
-                    <div class="prod-price">
-                        <span class="price old">$299.6</span>
-                        <span class="price">$210.25</span>
+                    <div class="prod-info set--width50">
+                        <h3><a href="#" title="<?php echo $row->name ?>"><?php echo $row->name ?></a></h3>
+                        <div class="ratingstar sm">
+                            <a href="#"><i class="fa fa-star fa-1" aria-hidden="true" style="color: gold;"></i></a>
+                            <a href="#"><i class="fa fa-star fa-1" aria-hidden="true" style="color: gold;"></i></a>
+                            <a href="#"><i class="fa fa-star fa-1" aria-hidden="true" style="color: gold;"></i></a>
+                            <a href="#"><i class="fa fa-star fa-1" aria-hidden="true" style="color: gold;"></i></a>
+                            <a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+                            <span class="number">(12)</span>
+                            <i class="fa fa-eye" aria-hidden="true"></i><span class="price black">
+                                &ensp; <?php echo $row->view ?></span>
+                        </div>
+                        <div class="p-price">
+                            <?php if ($row->discount > 0) : ?>
+                                <?php $price_new = $row->price - $row->discount; ?>
+                                <p class="price old"><?php echo number_format($row->price) ?> VNĐ</p>
+                                <p class="price black" style="color:crimson;"><?php echo number_format($price_new) ?> VNĐ </p>
+
+                            <?php else : ?>
+                                <p class="price black" style="color:crimson;">
+                                    <?php echo number_format($row->price) ?> VNĐ
+                                </p>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- row 2 -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/sound3.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Samsung UN65KS8000 65-Inch 4K Ultra HD...</a></h3>
-                    <div class="p-price">
-                        <span class="price old">$299.6</span>
-                        <span class="price">$210.25</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/ejbl.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony a7 Full-Frame Mirror Digital Camera...</a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
-                    </div>
-                    <div class="p-price">
-                        <span class="price black">$199.69</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/hat.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony MDRXB950BT/B Extra Bass </a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
-                    </div>
-                    <div class="p-price">
-                        <span class="price old">$299.6</span>
-                        <span class="price">$210.25</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- row 3 -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="<?php echo public_url() ?>site/image/nikon.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony SEL1670Z Vario-Tessar T E 16-70mm F4 ZA OSS</a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
-                    </div>
-                    <div class="prod-price">
-                        <span class="price black">$199.69</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="img/products/samsung.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony Xperia X Compact - Unlocked Smartphone...</a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
-                    </div>
-                    <div class="prod-price">
-                        <span class="price black">$199.69</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
-            <div class="product-item ver1 ">
-                <div class="prod-item-img set--width50">
-                    <a href="#"><img src="img/products/iMac.jpg" alt="images" class="img-responsive"></a>
-                </div>
-                <div class="prod-info set--width50">
-                    <h3><a href="#">Sony SEL1670Z Vario-Tes 16-70mm F4 ZA OSS</a></h3>
-                    <div class="ratingstar sm">
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-star-o fa-1" aria-hidden="true"></i></a>
-                        <span class="number">(12)</span>
-                    </div>
-                    <div class="prod-price">
-                        <span class="price black">$199.69</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
+
+
     </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -63,6 +63,13 @@ return array(
 	'mpga'	=>	'audio/mpeg',
 	'mp2'	=>	'audio/mpeg',
 	'mp3'	=>	array('audio/mpeg', 'audio/mpg', 'audio/mpeg3', 'audio/mp3'),
+	'mpeg'  =>  array('video/mpeg', 'video/quicktime'),
+	'mpg'   =>  array('video/mpeg', 'video/quicktime'),
+	'mp4'   =>  array('video/mp4', 'video/quicktime'),
+	'mpe'   =>  array('video/mpeg', 'video/quicktime'),
+	'qt'    =>  'video/quicktime',
+	'mov'   =>  array('video/quicktime', 'video/mp4'),
+	'avi'   =>  array('video/avi', 'video/x-msvideo'),
 	'aif'	=>	array('audio/x-aiff', 'audio/aiff'),
 	'aiff'	=>	array('audio/x-aiff', 'audio/aiff'),
 	'aifc'	=>	'audio/x-aiff',

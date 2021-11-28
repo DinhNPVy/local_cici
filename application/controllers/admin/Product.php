@@ -21,7 +21,7 @@ class Product extends MY_Controller
         $config = array();
         $config['total_rows'] = $total_rows; // tong tat ca san pham tren website
         $config['base_url'] = admin_url('product/index'); // link hiển thị ra danh sách sản phẩm
-        $config['per_page'] = 3; // số lượng hiển thị trên 1 trang
+        $config['per_page'] = 11; // số lượng hiển thị trên 1 trang
         $config['uri_segment'] = 4; // lấy ra phân đoạn hiện trên link url
         $config['next_link'] = 'Next';
         $config['prev_link'] = 'Previous';
@@ -128,6 +128,16 @@ class Product extends MY_Controller
                     $image_link = $upload_data['file_name'];
                 }
 
+                $this->load->library('upload_library');
+                $upload_path = './upload/video';
+                $upload_data_video = $this->upload_library->upload($upload_path, 'video');
+
+                $video = '';
+                if (isset($upload_data_video['file_name'])) {
+                    $video = $upload_data_video['file_name'];
+                }
+
+
                 // upload các ảnh kèm theo
                 $image_list = array();
                 $upload_path = './upload/product';
@@ -143,6 +153,7 @@ class Product extends MY_Controller
                     'discount' => $discount,
                     'warranty' => $this->input->post('warranty'),
                     'gifts'    => $this->input->post('gifts'),
+                    'video'    => $video,
                     'site_title' => $this->input->post('site_title'),
                     'meta_desc' => $this->input->post('meta_desc'),
                     'meta_key' => $this->input->post('meta_key'),
@@ -227,6 +238,17 @@ class Product extends MY_Controller
                 if (isset($upload_data['file_name'])) {
                     $image_link = $upload_data['file_name'];
                 }
+                $this->load->library('upload_library');
+                $upload_path = './upload/video';
+                $upload_data_video = $this->upload_library->upload($upload_path, 'filevideo');
+
+                $video = '';
+
+
+                if (isset($upload_data_video['file_name'])) {
+                    $video = $upload_data_video['file_name'];
+                }
+
 
                 // upload các ảnh kèm theo
                 $image_list = array();
@@ -249,6 +271,9 @@ class Product extends MY_Controller
                 );
                 if ($image_link != '') {
                     $data['image_link'] = $image_link;
+                }
+                if ($video != '') {
+                    $data['video'] = $video;
                 }
 
                 if (!empty($image_list)) {

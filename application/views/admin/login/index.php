@@ -4,6 +4,34 @@
     <?php $this->load->view('admin/head'); ?>
 </head>
 
+<style>
+    input {
+        position: relative;
+    }
+
+    .pass {
+        position: absolute;
+        float: left;
+        left: 81%;
+        top: 47.85%;
+        cursor: pointer;
+    }
+</style>
+<script type="text/javascript">
+    var x = true;
+
+    function showpass() {
+        if (x) {
+            document.getElementById('pass').type = "text";
+            x = false;
+
+        } else {
+            document.getElementById('pass').type = "password";
+            x = true;
+        }
+    }
+</script>
+
 <body class="">
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
@@ -62,7 +90,9 @@
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">
-                                            <input type="password" name="password" class="form-control" placeholder="Password">
+                                            <input type="password" name="password" class="form-control" id="pass" placeholder="Password">
+                                            <!-- <img class="pass" onclick="showpass()" src="<?php echo public_url('admin/assets') ?>/img/eye-outline.svg" alt="" style="height: 22px;"> -->
+
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
@@ -70,14 +100,14 @@
                                         </div>
                                         <div class="text-center">
                                             <span style="color:crimson; font-weight:bold;"><?php echo form_error('login'); ?></span>
-                                            <input type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0" value="Sign in" />
+                                            <input type="submit" name="login" class="btn bg-gradient-info w-100 mt-4 mb-0" value="Sign in" />
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-sm mx-auto">
                                         Don't have an account?
-                                        <a href="<?php echo public_url('admin/pages') ?>/sign-up.html" class="text-info text-gradient font-weight-bold">Sign up</a>
+                                        <a href="<?php echo public_url('admin/pages') ?>/sign-up.html" class="text-info text-gradient font-weight-bold">Sign Up</a>
                                     </p>
                                 </div>
                             </div>

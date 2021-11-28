@@ -1,6 +1,45 @@
 <head>
     <?php $this->load->view('admin/product/head', $this->data); ?>
 </head>
+<style>
+    .pagination1 {
+        display: block;
+        padding: 5px 10px;
+        float: right;
+    }
+
+    .pagination1 a {
+        background: #f3f3f3;
+        border: 1px solid #c4c4c4;
+        border-radius: 2px;
+        box-shadow: 0 1px 0 #eaeaea, 0 1px 0 #ffffff inset;
+        color: #717171;
+        display: inline-block;
+        float: left;
+        font-weight: 700;
+        line-height: 25px;
+        margin-right: 4px;
+        min-height: 25px;
+        padding: 0 10px;
+        text-decoration: none;
+    }
+
+    .pagination1 strong {
+        background: #f3f3f3;
+        border: 1px solid #c4c4c4;
+        border-radius: 2px;
+        box-shadow: 0 1px 0 #eaeaea, 0 1px 0 #ffffff inset;
+        color: maroon;
+        display: inline-block;
+        float: left;
+        font-weight: 700;
+        line-height: 25px;
+        margin-right: 4px;
+        min-height: 25px;
+        padding: 0 10px;
+        text-decoration: none;
+    }
+</style>
 <div class="col-12 mt-4">
     <?php $this->load->view('admin/message', $this->data) ?>
     <div class="card mb-4">
@@ -11,7 +50,7 @@
             </h6>
             <!-- <span class="titleIcon"><input type="checkbox" name="titleCheck" id="titleCheck" title="Choose All" style="float: right;"></span> -->
             <p class="text-sm">There are currently <?php echo $total_rows ?> products</p>
-            <div class="pagination-sm pagination-primary page-item" style="float: right;">
+            <div class="pagination1">
 
                 <?php echo $this->pagination->create_links() ?>
 

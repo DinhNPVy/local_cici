@@ -22,10 +22,70 @@ class Admin extends MY_Controller
         $message = $this->session->flashdata('message');
         $this->data['message'] = $message;
 
+        // // kiem tra xem thanh vien da dang nhap hay chua
+        // $admin_id_login = $this->session->userdata('admin_id_login');
+        // $this->data['admin_id_login'] = $admin_id_login;
+        // // neu dang nhap thanh cong lay thong tin thanh vien
+        // if ($admin_id_login) {
+        //     $this->load->model('admin_model');
+        //     $admin_info = $this->admin_model->get_info($admin_id_login);
+        //     $this->data['admin_info'] = $admin_info;
+        // }
+
 
         $this->data['temp'] = 'admin/admin/index';
         $this->load->view('admin/main', $this->data);
     }
+    // function login()
+    // {
+    //     $this->load->library('form_validation');
+    //     $this->load->helper('form');
+
+    //     if ($this->input->post()) {
+    //         $this->form_validation->set_rules('name', 'Username', 'required|valid_email');
+    //         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
+    //         $this->form_validation->set_rules('login', 'Sign in', 'callback_check_login');
+    //         if ($this->form_validation->run()) {
+    //             //lay thong tin thanh vien
+    //             $admin = $this->_get_user_info();
+    //             //gắn session id của thành viên đã đăng nhập
+    //             $this->session->set_userdata('user_id_login', $admin->id);
+
+    //             $this->session->set_flashdata('message', 'Successfully Logged In');
+    //             redirect();
+    //         }
+    //     }
+
+    //     //hiển thị ra view
+    //     $this->data['temp'] = 'site/admin/login';
+    //     $this->load->view('site/admin/login', $this->data);
+    // }
+    // function check_login()
+    // {
+    //     $admin = $this->_get_user_info();
+    //     if ($admin) {
+    //         return true;
+    //     }
+    //     $this->form_validation->set_message(__FUNCTION__, 'Failed Login');
+    //     return false;
+    // }
+
+    // /*
+    //  * Lay thong tin cua thanh vien
+    //  */
+    // private function _get_user_info()
+    // {
+    //     $username = $this->input->post('username');
+    //     $password = $this->input->post('password');
+    //     $password = md5($password);
+
+    //     $where = array('username' => $username, 'password' => $password);
+    //     $admin = $this->admin_model->get_info_rule($where);
+    //     return $admin;
+    // }
+
+
+
 
     // kiem tra ten dang nhap 
     function check_username()
@@ -195,6 +255,7 @@ class Admin extends MY_Controller
         $this->session->set_flashdata('message', 'Delete success');
         redirect(admin_url('admin'));
     }
+
 
     // thuc hien dang xuat
     function logout()

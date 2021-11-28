@@ -357,6 +357,20 @@
                             <div class="clear"></div>
                         </div>
 
+                        <div class="formRow">
+                            <label class="formLeft">Video:</label>
+                            <div class="formRight">
+                                <div class="left">
+                                    <input class="form-control" type="file" multiple="" name="filevideo" id="filevideo" size="50">
+                                    <video width="320" height="240" src=" <?php echo base_url('upload/product/' . $product->video) ?>">
+
+                                </div>
+                                <div class="clear error" name="video_error"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
                         <!-- Price -->
                         <div class="formRow">
                             <label for="param_price" class="formLeft">
