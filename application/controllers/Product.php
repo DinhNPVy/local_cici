@@ -92,6 +92,9 @@ class Product extends MY_Controller
         $id = $this->uri->rsegment(3);
         $product = $this->product_model->get_info($id);
         if (!$product) redirect();
+
+        // lay so diem trung binh danh gia
+        $product->raty = ($product->rate_count > 0) ? $product->rate_total / $product->rate_count : 0;
         $this->data['product'] = $product;
         // pre($product);
         // lay danh sach anh san pham
@@ -111,6 +114,48 @@ class Product extends MY_Controller
         $this->data['temp'] = 'site/product/view';
         $this->load->view('site/layout', $this->data);
     }
+    // raty
+    function raty()
+    {
+        $result = array();
+
+        // lay thong tin 
+        $id = $this->input->post('id'); // lay id san pham gui len tu trang ajax
+        $id = (!is_numeric($id)) ? 0 : $id;
+        $info = $this->product_model->get_info($id); // lay thong tin san pham can danh gia
+
+        if (!$info) {
+            exit();
+        }
+
+        // kiem tra xem khach da binh chon hay chua
+        $raty = $this->session->userdata('session_raty');
+        $raty = (!is_array($raty)) ? array() : $raty;
+        $result = array();
+        // neu ton tai id san pham nay trong session danh gia
+        if (isset($raty[$id])) {
+            $result['msg'] = 'You can only rate this product once';
+            $output = json_encode($result); // tro ve ma json
+            echo $output;
+            exit();
+        }
+        // cap nhat trang thai da binh chon
+        $raty[$id] = TRUE;
+        $this->session->set_userdata('session_raty', $raty);
+
+        $score = $this->input->post('score'); // lay so diem post len tu trang ajax
+        $data = array();
+        $data['rate_total'] = $info->rate_total + $score; // tong so diem
+        $data['rate_count'] = $info->rate_count + 1; // tong so luot danh gia
+        // cap nhat lai danh gia san pham
+        $this->product_model->update($id, $data);
+
+        $result['complete'] = TRUE;
+        $result['msg'] = 'Thank you for rating the product';
+        $output = json_encode($result);
+        exit();
+    }
+
     // buy
     function buy()
     {

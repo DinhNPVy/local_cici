@@ -21,7 +21,7 @@
         <?php $this->load->view('site/features') ?>
     </div>
     <footer>
-        <?php $this->load->view('site/footer') ?>
+        <?php $this->load->view('site/footer', $this->data) ?>
     </footer>
 </body>
 

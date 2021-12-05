@@ -21,7 +21,7 @@
                 </li>
             <?php else : ?>
                 <li class="nav-item d-flex align-items-center">
-                    <a href="<?php echo admin_url('admin/logout')  ?>" class="nav-link text-body font-weight-bold px-0">
+                    <a href="<?php echo admin_url('home/logout')  ?>" class="nav-link text-body font-weight-bold px-0">
                         <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none"> Sign out</span>
                     </a>

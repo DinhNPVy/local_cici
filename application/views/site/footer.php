@@ -7,18 +7,20 @@
                 </div>
                 <p class="info-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusant...</p>
                 <div class="widget-info">
-                    <ul>
-                        <li><i class="ion-ios-location fa-4" aria-hidden="true"></i>One World Trade Center Suite 8500 New York, NY 1006</li>
-                        <li class="clearfix"></li>
-                        <li><i class="ion-ios-telephone fa-4" aria-hidden="true"></i>
-                            <p class="title-contain">(800) 8001-8588</p>
-                        </li>
-                        <li class="clearfix"></li>
-                        <li><i class="ion-email-unread fa-4" aria-hidden="true"></i>
-                            <p class="title-contain">ClickShop@support.com</p>
-                        </li>
-                        <li class="clearfix"></li>
-                    </ul>
+                    <?php foreach ($supports as $row) : ?>
+                        <ul>
+                            <li><i class="ion-ios-location fa-4" aria-hidden="true"></i><?php echo $row->name ?></li>
+                            <li class="clearfix"></li>
+                            <li><i class="ion-ios-telephone fa-4" aria-hidden="true"></i>
+                                <p class="title-contain">(84+) <?php echo $row->phone ?> </p>
+                            </li>
+                            <li class="clearfix"></li>
+                            <li><i class="ion-email-unread fa-4" aria-hidden="true"></i>
+                                <p class="title-contain"><?php echo $row->gmail ?></p>
+                            </li>
+                            <li class="clearfix"></li>
+                        </ul>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">

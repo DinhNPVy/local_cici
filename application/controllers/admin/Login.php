@@ -25,7 +25,10 @@ class Login extends MY_Controller
 
         $this->load->model('admin_model');
         $where = array('username' => $username, 'password' => $password);
-        if ($this->admin_model->check_exists($where)) {
+        $admin = $this->admin_model->get_info_rule($where);
+        if ($admin) {
+            $this->session->set_userdata('permissions', json_decode($admin->permissions));
+            $this->session->set_userdata('admin_id', $admin->id);
             return true;
         }
         $this->form_validation->set_message(__FUNCTION__, 'Failed Login');

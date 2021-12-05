@@ -12,6 +12,38 @@
   		});
   	})
   </script>
+  <!-- Raty -->
+  <script type="text/javascript">
+  	$(document).ready(function() {
+  		// raty
+  		$('.raty_detailt').raty({
+  			score: function() {
+  				return $(this).attr('data-score');
+  			},
+  			half: true,
+  			click: function(score, evt) {
+  				var rate_count = $('.rate_count');
+  				var rate_count_total = rate_count.text();
+  				$.ajax({
+  					url: '<?php echo site_url('raty') ?>',
+  					type: 'POST',
+  					data: {
+  						'id': '<?php echo $product->id ?>',
+  						'score': score
+  					},
+  					dataType: 'json',
+  					success: function(data) {
+  						if (data.complete) {
+  							var total = parseInt(rate_count_total) + 1;
+  							rate_count.html(parseInt(total));
+  						}
+  						alert(data.msg);
+  					}
+  				});
+  			}
+  		});
+  	});
+  </script>
 
   <script type="text/javascript">
   	$(document).ready(function() {
@@ -51,10 +83,10 @@
   				var rate_count = $('.rate_count');
   				var rate_count_total = rate_count.text();
   				$.ajax({
-  					url: 'http:8080//localhost/webcodeigniter/product/raty.html',
+  					url: '<?php echo site_url('product/raty') ?>',
   					type: 'POST',
   					data: {
-  						'id': '9',
+  						'id': '<?php echo $product->id ?>',
   						'score': score
   					},
   					dataType: 'json',
@@ -166,12 +198,14 @@
   						<h3><a href="#"><?php echo $product->name ?></a></h3>
   						<div class="brandname">by <strong>SONY</strong></div>
   						<div class="ratingstar">
-  							<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-  							<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-  							<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-  							<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-  							<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-  							<span class="number">(12)</span>
+  							<a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+  							<a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+  							<a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+  							<a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+  							<a href="#"><i class="fa fa-star fa-1" aria-hidden="true"></i></a>
+  							<span class="raty_detailt" style="margin: 5px;" id="<?php echo $product->id ?>" data-score=' 1 <?php echo $product->raty ?>'>
+  							</span>
+  							<b class="rate_count"><?php echo $product->rate_count ?></b>
   							<a class="review">Add your review</a>
   						</div>
   						<div class="prod-price">

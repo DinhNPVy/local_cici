@@ -94,6 +94,21 @@
                                         <?php echo form_error('phone') ?>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+
+                                    <label for=""><span>Permissions: </span></label>
+                                    <div>
+                                        <?php foreach ($config_permissions as $controller => $actions) : ?>
+                                            <div>
+                                                <b><?php echo $controller ?> :</b>
+                                                <?php foreach ($actions as $action) : ?>
+                                                    <input type="checkbox" name="permissions[<?php echo $controller ?>][]" value="<?php echo $action ?>" /><?php echo $action ?>
+
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
 
                                 <div class="form-check form-check-info text-left">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>

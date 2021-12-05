@@ -713,12 +713,8 @@
                             </div>
                         </li>
                         <li class="dropdown menu-contact-page menu-item-has-child">
-                            <a href="#" title="ContactUs">CONTACT US</a>
-                            <span class="plus js-plus-icon"></span>
-                            <ul class="dropdown-menu menu-level">
-                                <li><a href="contact_us.html" title="contact us">Contact Us </a></li>
-                                <li><a href="about-us.html" title="about us">About Us</a></li>
-                            </ul>
+                            <a href="<?php echo base_url('contact/index') ?>" title="ContactUs">CONTACT US</a>
+
                         </li>
                         <li class="dropdown menu-blog-page menu-item-has-child">
                             <a href="<?php echo site_url('news/blog') ?>" title="Blog">blog</a>

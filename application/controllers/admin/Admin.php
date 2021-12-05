@@ -36,53 +36,7 @@ class Admin extends MY_Controller
         $this->data['temp'] = 'admin/admin/index';
         $this->load->view('admin/main', $this->data);
     }
-    // function login()
-    // {
-    //     $this->load->library('form_validation');
-    //     $this->load->helper('form');
 
-    //     if ($this->input->post()) {
-    //         $this->form_validation->set_rules('name', 'Username', 'required|valid_email');
-    //         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-    //         $this->form_validation->set_rules('login', 'Sign in', 'callback_check_login');
-    //         if ($this->form_validation->run()) {
-    //             //lay thong tin thanh vien
-    //             $admin = $this->_get_user_info();
-    //             //gắn session id của thành viên đã đăng nhập
-    //             $this->session->set_userdata('user_id_login', $admin->id);
-
-    //             $this->session->set_flashdata('message', 'Successfully Logged In');
-    //             redirect();
-    //         }
-    //     }
-
-    //     //hiển thị ra view
-    //     $this->data['temp'] = 'site/admin/login';
-    //     $this->load->view('site/admin/login', $this->data);
-    // }
-    // function check_login()
-    // {
-    //     $admin = $this->_get_user_info();
-    //     if ($admin) {
-    //         return true;
-    //     }
-    //     $this->form_validation->set_message(__FUNCTION__, 'Failed Login');
-    //     return false;
-    // }
-
-    // /*
-    //  * Lay thong tin cua thanh vien
-    //  */
-    // private function _get_user_info()
-    // {
-    //     $username = $this->input->post('username');
-    //     $password = $this->input->post('password');
-    //     $password = md5($password);
-
-    //     $where = array('username' => $username, 'password' => $password);
-    //     $admin = $this->admin_model->get_info_rule($where);
-    //     return $admin;
-    // }
 
 
 
@@ -90,11 +44,20 @@ class Admin extends MY_Controller
     // kiem tra ten dang nhap 
     function check_username()
     {
+        $action = $this->uri->rsegment(2);
         $username = $this->input->post('username');
-
         $where = array('username' => $username);
+        $check = true;
+        if ($action == 'edit') {
+            $info = $this->data['info']; // lay lai thong tin cua admin 
+            if ($info->username == $username) {
+                $check = false;
+            }
+        }
+
+
         //kiem tra username da ton tai hay chua
-        if ($this->admin_model->check_exists($where)) {
+        if ($check && $this->admin_model->check_exists($where)) {
 
             // tra ve thong bao loi
             $this->form_validation->set_message(__FUNCTION__, 'Account already exists');
@@ -119,20 +82,6 @@ class Admin extends MY_Controller
     }
 
 
-    // function isValidEmail()
-    // {
-    //     $email = $this->input->post('email');
-
-    //     return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
-    // }
-
-    // function check_phone()
-    // {
-    //     $phone = $this->input->post('phone');
-    //     if (preg_match('/^[0-9]{3}-[0-9]{4}-[0-9]{3}$/', $phone)) {
-    //         $this->form_validation->set_message(__FUNCTION__, 'Phone is valid');
-    //     }
-    // }
     // them moi thong tin quan tri vien
     function add()
     {
@@ -140,11 +89,11 @@ class Admin extends MY_Controller
         $this->load->helper('form');
         // neu ma co du lieu post lên thi kiem tra
         if ($this->input->post()) {
-            $this->form_validation->set_rules('username', 'UserName', 'required|min_length[3]|max_length[20]|callback_check_username');
+            $this->form_validation->set_rules('username', 'UserName', 'required|callback_check_username');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[255]');
-            $this->form_validation->set_rules('name', 'Name', 'required|min_length[3]|max_length[20]');
-            $this->form_validation->set_rules('email', 'Email', 'required|min_length[6]|max_length[50]|callback_check_email');
-            $this->form_validation->set_rules('phone', 'Phone', 'required|min_length[10]|max_length[10]');
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email');
+            $this->form_validation->set_rules('phone', 'Phone', 'required');
 
             // nhap lieu chinh xac
             if ($this->form_validation->run()) {
@@ -165,6 +114,8 @@ class Admin extends MY_Controller
 
 
                 );
+                $permissions = $this->input->post('permissions');
+                $data['permissions'] = json_encode($permissions);
                 if ($this->admin_model->create($data)) {
                     $this->session->set_flashdata('message', 'Create success');
                 } else {
@@ -174,6 +125,9 @@ class Admin extends MY_Controller
                 redirect(admin_url('admin'));
             }
         }
+        $this->config->load('permissions', true);
+        $config_permissions = $this->config->item('permissions');
+        $this->data['config_permissions'] = $config_permissions;
         $this->data['temp'] = 'admin/admin/signup';
         $this->load->view('admin/admin/signup', $this->data);
     }
@@ -196,14 +150,15 @@ class Admin extends MY_Controller
             $this->session->set_flashdata('message', 'Admin does not exist');
             redirect(admin_url('admin'));
         }
+        $info->permissions = json_decode($info->permissions);
         $this->data['info'] = $info;
 
         if ($this->input->post()) {
-            $this->form_validation->set_rules('username', 'UserName', 'required|min_length[3]|max_length[20]|callback_check_username');
+            $this->form_validation->set_rules('username', 'UserName', 'required|callback_check_username');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[255]');
-            $this->form_validation->set_rules('name', 'Name', 'required|min_length[3]|max_length[20]');
-            $this->form_validation->set_rules('email', 'Email', 'required|min_length[6]|max_length[50]');
-            $this->form_validation->set_rules('phone', 'Phone', 'required|min_length[10]|max_length[10]');
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('phone', 'Phone', 'required');
             if ($this->form_validation->run()) {
                 // them vao csdl
                 $username = $this->input->post('username');
@@ -222,7 +177,8 @@ class Admin extends MY_Controller
                     'phone' => $phone,
 
                 );
-
+                $permissions = $this->input->post('permissions');
+                $data['permissions'] = json_encode($permissions);
 
                 if ($this->admin_model->update($id, $data)) {
                     $this->session->set_flashdata('message', 'Update success');
@@ -233,6 +189,11 @@ class Admin extends MY_Controller
                 redirect(admin_url('admin'));
             }
         }
+
+        $this->config->load('permissions', true);
+        $config_permissions = $this->config->item('permissions');
+        $this->data['config_permissions'] = $config_permissions;
+
         $this->data['temp'] = 'admin/admin/edit';
         $this->load->view('admin/main', $this->data);
     }
@@ -254,15 +215,5 @@ class Admin extends MY_Controller
         $this->admin_model->delete($id);
         $this->session->set_flashdata('message', 'Delete success');
         redirect(admin_url('admin'));
-    }
-
-
-    // thuc hien dang xuat
-    function logout()
-    {
-        if ($this->session->userdata('login')) {
-            $this->session->unset_userdata('login');
-        }
-        redirect(admin_url('login'));
     }
 }

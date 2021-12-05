@@ -63,7 +63,29 @@
                                                 <?php echo form_error('phone') ?>
                                             </div>
                                         </div>
-                                       
+                                        <div class="mb-3">
+                                            <label for=""><span>Permissions: </span></label>
+                                            <div>
+                                                <?php foreach ($config_permissions as $controller => $actions) : ?>
+                                                    <?php
+
+                                                    $permissions_actions = array();
+                                                    if (isset($info->permissions->{$controller})) {
+                                                        $permissions_actions = $info->permissions->{$controller};
+                                                    }
+
+                                                    ?>
+                                                    <div>
+                                                        <b><?php echo $controller ?> :</b>
+                                                        <?php foreach ($actions as $action) : ?>
+                                                            <input type="checkbox" name="permissions[<?php echo $controller ?>][]" value="<?php echo $action ?>" <?php echo (in_array($action, $permissions_actions)) ? 'checked' : '' ?> /><?php echo $action ?>
+
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+
 
                                         <div class="text-center">
                                             <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2" value="Update" />

@@ -126,10 +126,7 @@
 
                                         <h4>Card Payments</h4>
                                     </option>
-                                    <option value="baokim">
 
-                                        <h4>BaoKimVN</h4>
-                                    </option>
 
                                 </select>
                                 <div class="error" style="color:crimson"> <?php echo form_error('payment') ?></div>

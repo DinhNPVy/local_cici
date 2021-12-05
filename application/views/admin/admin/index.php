@@ -19,21 +19,19 @@
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Join Date</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Permissions</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($list as $row) : ?>
                                             <tr>
-                                                <td>
-                                                    <input type="checkbox" name="id[]">
-                                                </td>
+
                                                 <td>
                                                     <div>
                                                         <?php echo $row->id ?>
@@ -56,6 +54,12 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-sm bg-gradient-success"> <?php echo $row->status ?></span>
+                                                </td>
+
+
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0"> <?php echo $row->permissions ?></p>
+
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span class="text-secondary text-xs font-weight-bold"> <?php echo $row->date ?></span>

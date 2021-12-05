@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+// ID root admin
+$config['root_admin'] = 1;
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

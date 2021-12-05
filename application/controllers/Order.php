@@ -93,11 +93,44 @@ class Order extends MY_Controller
 
                     redirect(site_url());
                 } elseif (in_array($payment, array('card', 'baokim'))) {
+                    // load thu vien thanh toan
+                    $this->load->library('payment/' . $payment . '_payment');
+
+                    // chuyen sang cong thanh toan
+                    $this->{$payment . '_payment'}->payment($transaction_id, $total_amount);
                 }
             }
         }
 
         $this->data['temp'] = 'site/order/checkout';
         $this->load->view('site/layout', $this->data);
+    }
+    // nhan ket qua tra ve tu cong thanh toan
+    function result()
+    {
+        // load thu vien thanh toan
+        $this->load->library('payment/baokim_payment');
+        $this->load->model('transaction_model');
+        // id cu agiao dich
+        $transaction_id = $this->input->post('order_id');
+
+        $transaction = $this->model->transaction_model->get_info($transaction_id);
+        if (!$transaction) {
+            redirect();
+        }
+
+        // goi toi ham kiem tra giam gia thanh toan tren bao kim
+        $status = $this->baokim_payment->result($transaction_id, $transaction->amount);
+        if ($status == true) {
+            // cap nhat lai trang thai don hang ma da thanh toan
+            $data = array();
+            $data['status'] = 1;
+            $this->model->transaction_model->update($transaction_id, $data);
+        } elseif ($status == false) {
+            // cap nhat lai trang thai don hang ma khong thanh toan
+            $data = array();
+            $data['status'] = 2;
+            $this->model->transaction_model->update($transaction_id, $data);
+        }
     }
 }
