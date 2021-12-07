@@ -67,29 +67,29 @@ class MY_Controller extends CI_Controller
         // neu ma dang nhap roi thi kh vao login nua
         if ($login && $controller == 'login') {
             redirect(admin_url('home'));
-        } elseif (!in_array($controller, array('login', 'home'))) {
-            $admin_id = $this->session->userdata('admin_id');
-            $admin_root = $this->config->item('root_admin');
-            if ($admin_id != $admin_root) {
-                // kiem tra quyen
-                $permissions_admin = $this->session->userdata('permissions');
-                // pre($permissions_admin);
-                $controller = $this->uri->rsegment(1);
-                $action = $this->uri->rsegment(2);
-                $check = true;
-                if (!isset($permissions_admin->{$controller})) {
-                    $check = false;
-                }
-                $permissions_actions = $permissions_admin->{$controller};
-                if (!in_array($action, $permissions_actions)) {
-                    $check = false;
-                }
-                if (!$check) {
-                    $this->session->set_flashdata('message', 'You do not have permission to view this page.');
+        // } elseif (!in_array($controller, array('login', 'home'))) {
+        //     $admin_id = $this->session->userdata('admin_id');
+        //     $admin_root = $this->config->item('root_admin');
+        //     if ($admin_id != $admin_root) {
+        //         // kiem tra quyen
+        //         $permissions_admin = $this->session->userdata('permissions');
+        //         // pre($permissions_admin);
+        //         $controller = $this->uri->rsegment(1);
+        //         $action = $this->uri->rsegment(2);
+        //         $check = true;
+        //         if (!isset($permissions_admin->{$controller})) {
+        //             $check = false;
+        //         }
+        //         $permissions_actions = $permissions_admin->{$controller};
+        //         if (!in_array($action, $permissions_actions)) {
+        //             $check = false;
+        //         }
+        //         if (!$check) {
+        //             $this->session->set_flashdata('message', 'You do not have permission to view this page.');
 
-                    redirect(base_url('admin'));
-                }
-            }
+        //             redirect(base_url('admin'));
+        //         }
+        //     }
         }
     }
 }

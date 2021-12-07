@@ -24,7 +24,7 @@ $config['root_admin'] = 1;
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8080/webcodeigniter';
+$config['base_url'] = 'http://localhost:81/local_cici';
 
 /*
 |--------------------------------------------------------------------------
